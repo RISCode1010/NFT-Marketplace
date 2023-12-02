@@ -1,0 +1,79 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    // "./node_modules/flowbite-react/**/*.js",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'prim-dark': '#24252D',
+        'prim-gray-1': '#E3E1E3',
+        'prim-gray-2': '#888888',
+        'prim-gray-3': '#4F4F4F',
+        'prim-black-1': '#2D2E36',
+        'prim-black-2': '#1B1A21',
+        'prim-black-3': '#2A2D3A',
+        'prim-black-4': '#24252D',
+        'prim-blue': '#57C6DC',
+        'prim-pink': '#E287D4',
+      },
+      padding: {
+        30: '120px',
+        160: '640px',
+        140: '560px',
+      },
+      margin: {
+        30: '120px',
+      },
+      width: {
+        200: '200px',
+        300: '300px',
+        400: '400px',
+        500: '500px',
+        700: '700px',
+        900: '900px',
+      },
+      height: {
+        200: '200px',
+        300: '300px',
+        500: '500px',
+        700: '700px',
+        900: '900px',
+      },
+      screens: {
+        lg: { max: '1800px' },
+        md: { max: '1080px' },
+        sm: { max: '600px' },
+        xs: { max: '400px' },
+        galaxyfold: { max: '280px' },
+        iphoneSE: { max: '375px' },
+        duoscreen: '300px',
+        surfaceDuo: '540px',
+        mobile: '600px',
+        note: '800px',
+        nestHub: '1024px',
+        tablet: '1080px',
+        laptop: '1230px',
+        pc: '1500px',
+        minmd: '1700px',
+        minlg: '2100px',
+      },
+    },
+    fontFamily: {
+      poppins: ['Poppins', 'sans-serif'],
+    },
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['dark'],
+      textColor: ['dark'],
+    },
+  },
+  // eslint-disable-next-line global-require
+  plugins: [require("flowbite/plugin")],
+}
