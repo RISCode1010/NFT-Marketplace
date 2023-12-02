@@ -146,7 +146,7 @@ const Navbar = () => {
               alt="logo"
             />
             <p className="flex flex-row dark:text-white text-prim-black-1 font-bold font-poppins text-lg ml-2 mt-1.5">
-              Fromuit
+              TokenTrend
             </p>
           </div>
         </Link>
