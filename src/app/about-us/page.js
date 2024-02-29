@@ -15,7 +15,7 @@ import {
 import Link from 'next/link';
 import assets from '../../assets';
 
-const aboutUS = () => {
+const AboutUS = () => {
   const slideTwo = useRef(null);
   const slideThree = useRef(null);
   const slideFour = useRef(null);
@@ -333,4 +333,4 @@ const aboutUS = () => {
   );
 };
 
-export default aboutUS;
+export default AboutUS;
