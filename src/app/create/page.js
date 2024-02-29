@@ -42,22 +42,16 @@ const CreateNFT = () => {
     if (!fileUrl || !name || !description || !price || price > 3) return;
 
     const data = JSON.stringify({ name, description, image: fileUrl });
-    console.log(data);
+    // console.log(data);
     try {
       const response = await uploadJSONToIPFS(data);
       if(response.success !== true){
-        console.log(response.success);
         return;
-        // return response.pinataURL;
       }
-      console.log("1");
       setLoading(true);
-      console.log("2");
       await createNFT(response.pinataURL, price);
-      console.log("3");
       setLoading(false);
-      console.log("4");
-      router.push('/market');
+      router.push('/');
     } catch (error) {
       console.log('Error creating NFT:', error);
     }
@@ -67,7 +61,7 @@ const CreateNFT = () => {
     // await uploadToInfura(acceptedFile[0]);
    const data = await uploadFileToIPFS(acceptedFile[0])
     setFileUrl(data.pinataURL);
-  console.log(data.pinataURL);
+  // console.log(data.pinataURL);
   // console.log(acceptedFile[0]);
   }, []);
 

@@ -39,7 +39,7 @@ import img03 from './img03.jpg';
 import img04 from './img04.jpg';
 import arrow from './arrow.png';
 import blockchain from './blockchain.png';
-import leader from './leader.png';
+import leader from './leader.jpg';
 
 export default {
   creator,

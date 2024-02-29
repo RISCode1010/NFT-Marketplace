@@ -22,7 +22,6 @@ const NFTCollection = () => {
   // sử dụng useEffect để load dữ liệu
   useEffect(() => {
     fetchCollectionOrListed().then((items) => {
-        console.log(items);
       setNftItems(items);
     });
   }, []);

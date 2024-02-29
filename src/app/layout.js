@@ -18,11 +18,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <ContextProvider>
-        <div className="bg-bg-prim-dark dark:bg-prim-dark">
+        <div className="bg-white dark:bg-prim-dark">
+        <Providers>
           <Navbar/>
-            <div className="w-full pt-16">
-              <Providers>{children}</Providers>
-            </div>
+            <main className="w-full pt-16">
+              {children}
+            </main>
+            </Providers>
           <Footer/>
         </div>
         </ContextProvider>

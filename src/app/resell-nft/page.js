@@ -7,9 +7,10 @@ import Image from "next/legacy/image";
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { Context } from '../../context/Context'
+import Loading from '../../components/Loading';
 
 const ResellNFT = (req) => {
-  const { createNFT } = useContext(Context);
+  const { createNFT,loading, setLoading } = useContext(Context);
   const [resellPrice, setResellPrice] = useState('');
   const [nftImage, setNftImage] = useState('');
   const [nftName, setNftName] = useState('');
@@ -53,16 +54,18 @@ const ResellNFT = (req) => {
         placeholder="NFT Price"
         handleClick={(e) => setResellPrice(e.target.value)}
       />
-      <div className="flex justify-end mt-10">
+      {loading?<Loading/>:<div className="flex justify-end mt-10">
         <Button
           btnName="Sell NFT"
           classStyles="rounded-lg text-lg active:scale-110 duration-100"
-          handleClick={() => {
-            createNFT(tokenURI, resellPrice, id, true);
+          handleClick={async() => {
+            setLoading(true);
+            await createNFT(tokenURI, resellPrice, id, true);
+            setLoading(false);
             router.push('/listed');
           }}
         />
-      </div>
+      </div>}
     </div>
   );
 };

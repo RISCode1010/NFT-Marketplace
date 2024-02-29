@@ -24,7 +24,7 @@ const Modal = ({ header, body, footer, handleClose, closeBtn }) => {
     >
       <div
         ref={modalRef}
-        className="flex flex-col bg-prim-black-4 rounded-lg shadow-lg pc:w-2/5 mobile:w-4/5 sm:w-full dark:bg-prim-black-1 dark:shadow-none sm:rounded-none"
+        className="flex flex-col bg-white rounded-lg shadow-lg pc:w-2/5 mobile:w-4/5 sm:w-full dark:bg-prim-black-1 dark:shadow-none sm:rounded-none"
       >
         {closeBtn && (
           <div className="flex justify-end mt-4 mr-4">

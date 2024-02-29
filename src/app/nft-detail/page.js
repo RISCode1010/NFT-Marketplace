@@ -16,10 +16,7 @@ import Modal from '../../components/Modal';
 const NFTdetail = () => {
   const { buyNFT, currentAccount, loading, setLoading } = useContext(Context);
   const router = useRouter();
-  const searchParams = useSearchParams()
-  console.log(searchParams);
-  // console.log("...........   ",req.url);
-  // console.log(R);
+  const searchParams = useSearchParams();
   const { theme } = useTheme();
   const [paymentModal, setPaymentModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
@@ -81,6 +78,7 @@ const NFTdetail = () => {
     setLoading(false);
     setPaymentModal(false);
     setSuccessModal(true);
+    router.push('/');
   };
 
   return (

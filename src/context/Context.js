@@ -11,6 +11,8 @@ export const Context = React.createContext();
 const fetchContract = (signerOrProvider) =>
   new ethers.Contract(ContractAddress, ContractAddressABI, signerOrProvider);
 
+  const providerUrl = process.env.NEXT_PUBLIC_URL;
+
   
 export const ContextProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState('');
@@ -49,21 +51,14 @@ export const ContextProvider = ({ children }) => {
   // Create NFT (signer side)
   const createNFT = async (url, unformattedPrice, id, resell) => {
     // Interact contract as signer
-    // console.log(url,"  ",unformattedPrice,"  ",id,"  ",resell);
-    // console.log("11");
     const provider = new ethers.BrowserProvider(window.ethereum);
-    // console.log("12",provider);
     await provider.send('eth_requestAccounts', []);
     const signer = await provider.getSigner();
-    // console.log("13",signer);
     const contract = fetchContract(signer);
-    // console.log("14",contract);
 
     // Parse price number so that the machine can understand
     const price = await ethers.parseUnits(unformattedPrice, 'ether');
-    // console.log("15",Number(price));
     const listingPrice = await contract.getListingPrice();
-    // console.log("16",Number(listingPrice));
 
     // Pay listing fee to the market owner (value = msg.value)
     const sellMarketItem = resell
@@ -74,14 +69,14 @@ export const ContextProvider = ({ children }) => {
           value: listingPrice.toString(),
         });
     const response = await sellMarketItem.wait();
-    console.log(response);
+    // console.log(response);
   };
 
   // Fetch all NFTs listed on marketplace (owner: marketplace, provider side)
   const fetchExistingMarketItem = async () => {
     setLoading(true);
     // Interact contract as provider
-    const provider = new ethers.JsonRpcProvider();
+    const provider = new ethers.JsonRpcProvider(providerUrl);
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();
@@ -118,20 +113,14 @@ export const ContextProvider = ({ children }) => {
     // Interact contract as signer
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    console.log("1",signer);
     const contract = fetchContract(signer);
-    console.log("2",contract);
     // Parse price number so that the machine can understand
-    console.log("22",nft.price);
     const price = ethers.parseUnits(nft.price, 'ether');
-    console.log("3",price);
     const transaction = await contract.createMarketSale(nft.tokenId, {
       value: price,
     });
-    console.log("4",transaction);
     setLoading(true);
     const res = await transaction.wait();
-    console.log("5",res);
     setLoading(false);
   };
 
@@ -141,9 +130,7 @@ export const ContextProvider = ({ children }) => {
     // Interact contract as signer
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
-    // console.log("01 ",signer);
     const contract = fetchContract(signer);
-    // console.log("1 ",contract);
 
     // Check if getting data for collection or listed page
     const data =
@@ -151,7 +138,6 @@ export const ContextProvider = ({ children }) => {
         ? await contract.fetchItemsListed()
         : await contract.fetchMyNFTs();
 
-    // console.log("dataaaaa ",data);
 
     const items = await Promise.all(
       data.map(async ({ tokenId, seller, owner, price: unformattedPrice }) => {
@@ -177,8 +163,6 @@ export const ContextProvider = ({ children }) => {
         };
       })
     );
-
-    // console.log(items);
 
     return items;
   };

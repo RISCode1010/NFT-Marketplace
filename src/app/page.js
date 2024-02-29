@@ -40,7 +40,7 @@ const Home = () => {
       {/* =================Banner================= */}
       <div className="relative flex justify-center w-full">
         <h1 className="absolute z-20 w-4/5 py-3 text-6xl font-semibold text-center text-white select-none font-poppins md:text-3xl sm:text-xl xs:text-lg -bottom-36 duoscreen:-bottom-44 laptop:-bottom-60 xl:-bottom-72 minmd:-bottom-96 sm:font-bold">
-          Discover, create and buy awesome NFTs from UIT
+          Discover, create and buy awesome NFTs from TokenTrend
         </h1>
       </div>
       <CarouselComp />
@@ -61,7 +61,7 @@ const Home = () => {
           <CreatorCard
             imageCard={images.creator1}
             number="1"
-            name="UIT NFT Creator 1"
+            name="NFT Creator 1"
             address="0xFbF...825e"
           />
         </div>
@@ -69,7 +69,7 @@ const Home = () => {
           <CreatorCard
             imageCard={images.creator2}
             number="2"
-            name="UIT NFT Creator 2"
+            name="NFT Creator 2"
             address="0xefv1...tjy5"
           />
         </div>
@@ -77,7 +77,7 @@ const Home = () => {
           <CreatorCard
             imageCard={images.creator3}
             number="3"
-            name="UIT NFT Creator 3"
+            name="NFT Creator 3"
             address="0xtdt3...nh0n"
           />
         </div>
@@ -85,7 +85,7 @@ const Home = () => {
           <CreatorCard
             imageCard={images.creator4}
             number="4"
-            name="UIT NFT Creator 4"
+            name="NFT Creator 4"
             address="0xh2fg...asd7"
           />
         </div>
@@ -93,7 +93,7 @@ const Home = () => {
           <CreatorCard
             imageCard={images.creator5}
             number="5"
-            name="UIT NFT Creator 5"
+            name="NFT Creator 5"
             address="0xqk8...bw9e"
           />
         </div>
@@ -102,7 +102,7 @@ const Home = () => {
       {/* =======================NFTs======================= */}
       <div className="flex flex-row justify-between my-4 sm:flex-col">
         <p className="my-6 text-3xl font-bold dark:text-white text-prim-black-3">
-          UIT NFTs
+          NFTs
         </p>
         <div className="sm:mb-5 sm:flex sm:justify-center">
           <SearchBar
